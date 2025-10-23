@@ -1,5 +1,11 @@
+import Header from "@/ui/Header";
+
 function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <Header>Dashboard</Header>
+    </div>
+  );
 }
 
 export default Home;

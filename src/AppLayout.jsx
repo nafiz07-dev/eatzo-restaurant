@@ -5,18 +5,15 @@ import {
   SidebarTrigger,
 } from "./components/ui/sidebar";
 import AppSidebar from "./components/ui/AppSidebar";
-import eatzoTranLogo from "./asets/eatzo-transparent.png";
+import Nav from "./features/Navigation/Nav";
 
 function AppLayout() {
   return (
     <SidebarProvider>
       <AppSidebar />
 
-      <SidebarInset className="w-full">
-        <nav className="flex justify-between items-center p-2 border-b">
-          <SidebarTrigger />
-          <img src={eatzoTranLogo} alt="eatzo logo" className="w-20" />
-        </nav>
+      <SidebarInset className="w-full bg-[#FAFAFA] ">
+        <Nav />
 
         <main className="p-4 flex-1 overflow-auto">
           <Outlet />
