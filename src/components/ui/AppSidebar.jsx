@@ -1,13 +1,7 @@
 import {
-  Calendar,
   ChevronDown,
-  ChevronUp,
   ChevronsUpDown,
-  Home,
   HomeIcon,
-  Inbox,
-  Search,
-  Settings,
   Store,
   Banknote,
   Soup,
@@ -43,9 +37,13 @@ import {
 import { Link } from "react-router-dom";
 
 // Image import
-import restLogo from "../../asets/Restaurants/rest-logo.png";
 import restLogo1 from "../../asets/Restaurants/image.png";
 import eatzoLogo from "../../asets/eatzo-logo.png";
+
+/*
+ menu item:
+  - Archive: all the past data for restaurant will stay here.
+*/
 
 function AppSidebar() {
   return (

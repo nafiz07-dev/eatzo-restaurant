@@ -240,8 +240,11 @@ function SidebarTrigger({ className, onClick, ...props }) {
   const { toggleSidebar } = useSidebar();
 
   return (
-    <button onClick={toggleSidebar} className="p-2 hover:bg-muted rounded-md">
-      <HiMenuAlt1 className="text-foreground" size={25} />
+    <button
+      onClick={toggleSidebar}
+      className="p-2 hover:bg-muted rounded-md cursor-pointer"
+    >
+      <HiMenuAlt1 className="text-foreground " size={25} />
     </button>
   );
 }
