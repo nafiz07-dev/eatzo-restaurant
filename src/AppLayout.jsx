@@ -1,9 +1,6 @@
-import { Outlet, useLocation } from "react-router-dom";
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "./components/ui/sidebar";
+import { Outlet } from "react-router-dom";
+import { SidebarInset, SidebarProvider } from "./components/ui/sidebar";
+import { useLocation } from "react-router-dom";
 import AppSidebar from "./components/ui/AppSidebar";
 import Nav from "./features/Navigation/Nav";
 import BottomBar from "./features/Navigation/BottomBar";
@@ -11,7 +8,6 @@ import { AnimatePresence, motion } from "framer-motion";
 
 function AppLayout() {
   const location = useLocation();
-
   return (
     <SidebarProvider>
       <AppSidebar />

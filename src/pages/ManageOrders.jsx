@@ -11,7 +11,6 @@ function ManageOrders() {
 
   return (
     <>
-      <Header type={"big"}>Manage Orders</Header>
       <FadeinBox>
         <ManagementStats />
       </FadeinBox>

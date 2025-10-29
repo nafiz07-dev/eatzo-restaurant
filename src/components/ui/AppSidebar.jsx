@@ -6,6 +6,7 @@ import {
   Banknote,
   Soup,
   ChartLine,
+  Archive,
 } from "lucide-react";
 
 import {
@@ -39,16 +40,66 @@ import { Link } from "react-router-dom";
 // Image import
 import restLogo1 from "../../asets/Restaurants/image.png";
 import eatzoLogo from "../../asets/eatzo-logo.png";
+import NavDropDown from "@/features/Navigation/NavDropDown";
 
 /*
  menu item:
   - Archive: all the past data for restaurant will stay here.
 */
 
-function AppSidebar() {
+const navContent = [
+  {
+    group: "Home",
+    icon: <HomeIcon className="mr-2 h-4 w-4" />,
+    defaultOpen: true,
+    subItem: [
+      { item: "Dashboard", url: "/" },
+      { item: "New Orders", url: "/orders" },
+      { item: "Manage Orders", url: "/manage-orders" },
+    ],
+  },
+  {
+    group: "Restaurant",
+    icon: <Store className="mr-2 h-4 w-4" />,
+    subItem: [
+      { item: "Menu", url: "/menu" },
+      { item: "Open & Closing Hour", url: "/open-close" },
+      { item: "Edit Profile", url: "/profile" },
+    ],
+  },
+  {
+    group: "Payment",
+    icon: <Banknote className="mr-2 h-4 w-4" />,
+    subItem: [
+      { item: "Payment History", url: "/payment-history" },
+      { item: "Withdraw", url: "/withdraw" },
+      { item: "Payment Status", url: "/payment-status" },
+    ],
+  },
+  {
+    group: "Analytics",
+    icon: <ChartLine className="mr-2 h-4 w-4" />,
+    subItem: [
+      { item: "Order Stats", url: "/order-stats" },
+      { item: "Item Stats", url: "/item-stats" },
+      { item: "Income Stats", url: "/income-stats" },
+    ],
+  },
+  {
+    group: "Feedback",
+    icon: <Soup className="mr-2 h-4 w-4" />,
+    subItem: [{ item: "Reviews", url: "/reviews" }],
+  },
+  {
+    group: "Archive",
+    icon: <Archive className="mr-2 h-4 w-4" />,
+    subItem: [{ item: "Order History", url: "/order-history" }],
+  },
+];
+
+function AppSidebar({ setOpen }) {
   return (
     <Sidebar>
-      {/* Sidebar Header Start */}
       <SidebarHeader className="mt-2 ml-2  ">
         <div className="flex gap-2">
           {/* Restaurant logo */}
@@ -63,7 +114,6 @@ function AppSidebar() {
           </div>
         </div>
       </SidebarHeader>
-      {/* Sidebar header end-- */}
 
       <SidebarContent>
         <SidebarGroup>
@@ -71,212 +121,11 @@ function AppSidebar() {
             Platform
           </SidebarGroupLabel>
 
-          {/* Second */}
           <SidebarMenu>
-            <Collapsible asChild defaultOpen className="group/collapsible">
-              <SidebarMenuItem>
-                <CollapsibleTrigger asChild>
-                  <SidebarMenuButton className=" text-[16px] text-black">
-                    <HomeIcon className="mr-2 h-4 w-4" />
-                    <span className="font-[350]">Home</span>
-                    <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
-                  </SidebarMenuButton>
-                </CollapsibleTrigger>
-
-                <CollapsibleContent>
-                  <SidebarMenuSub>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton asChild>
-                        <Link to="/home/test1">
-                          <span>New Orders</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton asChild>
-                        <Link to="/home/test2">
-                          <span>Order Progress</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton asChild>
-                        <Link to="/home/test3">
-                          <span>Payment</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-                  </SidebarMenuSub>
-                </CollapsibleContent>
-              </SidebarMenuItem>
-            </Collapsible>
-            {/*  */}
-            <Collapsible asChild className="group/collapsible">
-              <SidebarMenuItem>
-                <CollapsibleTrigger asChild>
-                  <SidebarMenuButton className=" text-[16px] text-black">
-                    <Banknote className="mr-2 h-4 w-4" />
-                    <span className="font-[350]">Payment</span>
-                    <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
-                  </SidebarMenuButton>
-                </CollapsibleTrigger>
-
-                <CollapsibleContent>
-                  <SidebarMenuSub>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton asChild>
-                        <Link to="/home/test1">
-                          <span>Test1</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton asChild>
-                        <Link to="/home/test2">
-                          <span>Test2</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton asChild>
-                        <Link to="/home/test3">
-                          <span>Test3</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-                  </SidebarMenuSub>
-                </CollapsibleContent>
-              </SidebarMenuItem>
-            </Collapsible>
-
-            <Collapsible asChild className="group/collapsible">
-              <SidebarMenuItem>
-                <CollapsibleTrigger asChild>
-                  <SidebarMenuButton className=" text-[16px] text-black">
-                    <Store className="mr-2 h-4 w-4" />
-                    <span className="font-[350]">Restaurant</span>
-                    <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
-                  </SidebarMenuButton>
-                </CollapsibleTrigger>
-
-                <CollapsibleContent>
-                  <SidebarMenuSub>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton asChild>
-                        <Link to="/home/test1">
-                          <span>Test1</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton asChild>
-                        <Link to="/home/test2">
-                          <span>Test2</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton asChild>
-                        <Link to="/home/test3">
-                          <span>Test3</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-                  </SidebarMenuSub>
-                </CollapsibleContent>
-              </SidebarMenuItem>
-            </Collapsible>
-
-            <Collapsible asChild className="group/collapsible">
-              <SidebarMenuItem>
-                <CollapsibleTrigger asChild>
-                  <SidebarMenuButton className=" text-[16px] text-black">
-                    <ChartLine className="mr-2 h-4 w-4" />
-                    <span className="font-[350]">Statistics</span>
-                    <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
-                  </SidebarMenuButton>
-                </CollapsibleTrigger>
-
-                <CollapsibleContent>
-                  <SidebarMenuSub>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton asChild>
-                        <Link to="/home/test1">
-                          <span>Test1</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton asChild>
-                        <Link to="/home/test2">
-                          <span>Test2</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton asChild>
-                        <Link to="/home/test3">
-                          <span>Test3</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-                  </SidebarMenuSub>
-                </CollapsibleContent>
-              </SidebarMenuItem>
-            </Collapsible>
-
-            <Collapsible asChild className="group/collapsible">
-              <SidebarMenuItem>
-                <CollapsibleTrigger asChild>
-                  <SidebarMenuButton className=" text-[16px] text-black">
-                    <Soup className="mr-2 h-4 w-4" />
-                    <span className="font-[350]">Feedback</span>
-                    <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
-                  </SidebarMenuButton>
-                </CollapsibleTrigger>
-
-                <CollapsibleContent>
-                  <SidebarMenuSub>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton asChild>
-                        <Link to="/home/test1">
-                          <span>Test1</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton asChild>
-                        <Link to="/home/test2">
-                          <span>Test2</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton asChild>
-                        <Link to="/home/test3">
-                          <span>Test3</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-                  </SidebarMenuSub>
-                </CollapsibleContent>
-              </SidebarMenuItem>
-            </Collapsible>
-
-            {/*  */}
+            {navContent.map((group, key) => (
+              <NavDropDown group={group} key={key} setOpen={setOpen} />
+            ))}
           </SidebarMenu>
-          {/* Sidebar Menu ends */}
-          {/* </SidebarGroupContent> */}
         </SidebarGroup>
       </SidebarContent>
 

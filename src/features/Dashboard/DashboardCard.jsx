@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import DashboardCardDropdown from "./DashboardCardDropdown";
 
 import { TrendingUp, ChevronRight, TrendingDown } from "lucide-react";
 import { useState } from "react";

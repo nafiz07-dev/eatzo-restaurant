@@ -11,8 +11,10 @@ import OrderItemCard from "./OrderItemCard";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import DropDownUi from "@/ui/DropDownUi";
+import { ChevronDown, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
-function OrderCard({ manage = false }) {
+function OrderCard({ manage = false, history = false }) {
   // manage -- so that I can use this on managment page and orders page.
   // Later will load data dynamically
 
@@ -41,10 +43,25 @@ function OrderCard({ manage = false }) {
           />
         </CardFooter>
       ) : (
-        <CardFooter className="flex gap-2">
-          <Button>Accept</Button>
-          <Button variant="outline">Cancel</Button>
-        </CardFooter>
+        <div>
+          {history ? (
+            <Link>
+              <CardFooter className="flex justify-between">
+                <CardDescription>
+                  Delivered on Tuesday 13, August, 2025 at 12:10
+                </CardDescription>
+                <CardAction>
+                  <ChevronRight />
+                </CardAction>
+              </CardFooter>
+            </Link>
+          ) : (
+            <CardFooter className="flex gap-2">
+              <Button>Accept</Button>
+              <Button variant="outline">Cancel</Button>
+            </CardFooter>
+          )}
+        </div>
       )}
     </Card>
   );

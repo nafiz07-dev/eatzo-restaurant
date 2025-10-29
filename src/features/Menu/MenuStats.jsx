@@ -2,12 +2,18 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Item, ItemTitle } from "@/components/ui/item";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+
+// TODO: On toggle close the shop, the content: shop is closed
+// TODO: If the store is closed then show an error popup on dasboard.
 
 function MenuStats() {
   return (
@@ -15,6 +21,12 @@ function MenuStats() {
       <Card>
         <CardHeader>
           <CardTitle>Menu Details</CardTitle>
+          <CardAction>
+            <div className="flex items-center space-x-2">
+              <Switch id="close" />
+              <Label htmlFor="close">Close the Shop</Label>
+            </div>
+          </CardAction>
           <CardDescription>Statistics of menu.</CardDescription>
         </CardHeader>
         <CardContent className="flex gap-2">

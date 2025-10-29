@@ -12,7 +12,6 @@ function Orders() {
   return (
     <div>
       <div className="flex justify-between mb-4">
-        <Header type={"big"}>New Orders</Header>
         <DropDownUi
           dropdown={sortBy}
           setDropdown={setSortBy}

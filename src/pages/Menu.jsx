@@ -14,7 +14,6 @@ function Menu() {
 
   return (
     <div className="mb-20">
-      <Header type={"big"}>Menu</Header>
       <FadeinBox>
         <MenuStats />
       </FadeinBox>
