@@ -12,13 +12,19 @@ import PaymentStatus from "./pages/PaymentStatus";
 import Reviews from "./pages/Reviews";
 import OrderHistory from "./pages/OrderHistory";
 import Setting from "./pages/Setting";
+import Login from "./pages/Login";
+import ProtectedRoute from "./Authentication/ProtectedRoute";
 
 // routes.jsx
 export const routes = [
   {
-    element: <AppLayout />,
+    element: (
+      <ProtectedRoute>
+        <AppLayout />
+      </ProtectedRoute>
+    ),
     children: [
-      { path: "/", element: <Dashboard />, title: "Dashboard" },
+      { path: "/dashboard", element: <Dashboard />, title: "Dashboard" },
       { path: "/orders", element: <Orders />, title: "New Orders" },
       { path: "/menu", element: <Menu />, title: "Menu" },
       {
@@ -56,6 +62,7 @@ export const routes = [
       },
     ],
   },
+  { path: "/", element: <Login /> },
 ];
 
 export const router = createBrowserRouter(routes);
