@@ -11,6 +11,7 @@ import {
 import { TrendingUp, ChevronRight, TrendingDown } from "lucide-react";
 import { useState } from "react";
 import DropDownUi from "@/ui/DropDownUi";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function DashboardCard({
   title,
@@ -18,6 +19,9 @@ function DashboardCard({
   updown,
   hideRange = true,
   stats = true,
+  isLoading = false,
+  range,
+  setRange,
 }) {
   // updown -- {up: true, value: 20}
   // hideRange -- don't need range for some card. ture/false
@@ -27,16 +31,19 @@ function DashboardCard({
 
   // FEATURE: Upon clicking on the card beside range, it will redirect to the corosponding page.
 
-  const [range, setRange] = useState("Today");
-
   // For dropdown
-  const droplist = ["Today", "This Week", "This Month"];
+  const droplist = ["Today", "This Week", "This Month", "All Time"];
+  // number === "৳undefined.00", for a split second, the number is showing undefined before setting to skeleton.
 
   return (
     <Card>
       <CardHeader>
         <CardDescription className="text-[16px]">{title}</CardDescription>
-        <CardTitle className="text-xl">{number}</CardTitle>
+        {isLoading || number === "৳undefined.00" ? (
+          <Skeleton className="w-25 h-7" />
+        ) : (
+          <CardTitle className="text-xl">{number}</CardTitle>
+        )}
 
         <CardAction>
           {hideRange && (

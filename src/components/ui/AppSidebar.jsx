@@ -35,12 +35,16 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@radix-ui/react-collapsible";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Image import
 import restLogo1 from "../../asets/Restaurants/image.png";
 import eatzoLogo from "../../asets/eatzo-logo.png";
 import NavDropDown from "@/features/Navigation/NavDropDown";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { logout } from "@/services/login";
+import toast from "react-hot-toast";
+import { Spinner } from "./spinner";
 
 /*
  menu item:
@@ -98,6 +102,23 @@ const navContent = [
 ];
 
 function AppSidebar({ setOpen }) {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: logout,
+    onSuccess: () => {
+      toast.success("Logged out");
+      queryClient.removeQueries();
+      navigate("/");
+    },
+  });
+
+  function handleLogout() {
+    if (isPending) toast.loading("Logging you out..");
+    mutate();
+  }
+
   return (
     <Sidebar>
       <SidebarHeader className="mt-2 ml-2  ">
@@ -159,8 +180,9 @@ function AppSidebar({ setOpen }) {
                 className="w-[--radix-popper-anchor-width]"
               >
                 <DropdownMenuItem>Account</DropdownMenuItem>
-                <DropdownMenuItem>
-                  <span className="text-red-600">Sign out</span>
+                <DropdownMenuItem onClick={handleLogout}>
+                  {isPending && <Spinner />}
+                  <span className="text-red-600">Logout</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

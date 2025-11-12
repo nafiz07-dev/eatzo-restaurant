@@ -6,22 +6,25 @@ Designing:
     ✔ Menu @done (10/28/2025, 8:08:34 PM)
         ☐ Edit menu
     ✔ Open & Closing Hour @done (10/28/2025, 9:46:24 PM)
-    ☐ Edit Profile
+    ✔ Edit Profile @done (10/31/2025, 9:11:49 AM)
 
-    ☐ Payment History
-    ☐ Withdraw
-    ☐ Payment Status
+    ✔ Payment History @done (10/31/2025, 9:11:51 AM)
+    ✔ Withdraw @done (10/31/2025, 9:11:51 AM)
+    ✔ Payment Status @done (10/31/2025, 9:11:52 AM)
 
     // I'll build them later, when I'll have time.
     ☐ Order Stats
     ☐ Item Stats
     ☐ Income Stats
 
-    ☐ Reviews
-    ☐ Order History
+    ✔ Reviews @done (10/31/2025, 9:12:01 AM)
+    ✔ Order History @done (10/31/2025, 9:12:02 AM)
 
 
 Implementing data base:
+    ✔ Login function @done (11/3/2025, 7:17:33 PM)
+    ✔ Logout function @done (11/3/2025, 7:17:36 PM)
+    
     ☐ Dashboard
     ☐ New Orders (Real time)
     ☐ Manage Orders
@@ -41,3 +44,10 @@ Implementing data base:
 
     ☐ Reviews
     ☐ Order History
+
+
+Things I need to make sure:
+    ☐ Is the total_price is calculated without delivery fee?
+        maybe not so continue without delivery fee.
+    ☐ Order part of customer side, after delivery, show order history is not showing.
+    ☐ in the customer part, I'm setting the total price in the order, and displaying it like x2, its missleading. totalprice 450 x2? how that supposed to work?

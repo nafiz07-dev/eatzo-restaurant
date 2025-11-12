@@ -20,15 +20,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 export const description = "A bar chart with a custom label";
-const chartData = [
-  { day: "Sat", order: 10 },
-  { day: "Sun", order: 3 },
-  { day: "Mon", order: 2 },
-  { day: "Tus", order: 7 },
-  { day: "Wed", order: 2 },
-  { day: "Thu", order: 5 },
-  { day: "Fri", order: 18 },
-];
+
 const chartConfig = {
   order: {
     label: "Order",
@@ -39,7 +31,24 @@ const chartConfig = {
   },
 };
 
-function ChartBarLabel() {
+function ChartBarLabel({ rawBarData }) {
+  // props unused: isLoading
+  const days = ["Sat", "Sun", "Mon", "Tus", "Wed", "Thu", "Fri"];
+
+  // Initialize all days with 0 orders
+  const chartData = days?.map((day) => ({ day, order: 0 }));
+
+  // Count orders per day
+  rawBarData?.forEach((item) => {
+    const date = new Date(item?.created_at);
+    const dayIndex = date?.getDay(); // 0=Sun, 6=Sat
+
+    // Convert JS day index to our custom order (Sat→Fri)
+    const mapIndex = dayIndex === 6 ? 0 : dayIndex + 1;
+
+    chartData[mapIndex].order += 1;
+  });
+
   return (
     <Card>
       <CardHeader>

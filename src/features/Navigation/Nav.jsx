@@ -16,8 +16,10 @@ import { routes } from "@/route";
 import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
 import { Settings, Bell, BadgeTurkishLira } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, matchPath, useLocation } from "react-router-dom";
 import NotificationCard from "../Notification/NotificationCard";
+import useRevenue from "@/hooks/useRevenue";
+import FadeinBox from "@/motion/FadeinBox";
 
 function Nav() {
   // For setting the header along with the url.
@@ -25,13 +27,16 @@ function Nav() {
   const [header, setHeader] = useState("");
 
   useEffect(() => {
-    // Flatten children so we can find matches easily
     const childRoutes = routes?.flatMap((r) => r.children || []);
-    const matched = childRoutes?.find((r) => r.path === pathname);
+
+    // Find a match that supports dynamic routes like :orderId
+    const matched = childRoutes?.find((r) => matchPath(r.path, pathname));
 
     if (matched) setHeader(matched.title);
     else setHeader("");
-  }, [pathname]);
+  }, [pathname, routes]);
+
+  const { revenue, isLoading } = useRevenue();
 
   return (
     <nav className="flex justify-between items-center p-2 border-b w-full bg-white/60 sticky top-0 z-50 backdrop-blur-md ">
@@ -41,10 +46,14 @@ function Nav() {
       </div>
 
       <div className="flex gap-3 items-center mr-2">
-        <div className="border border-border rounded-xl px-3 py-1 flex gap-1 items-center">
-          <BadgeTurkishLira size={17} />
-          <span className="text-sm">0.00</span>
-        </div>
+        {!isLoading && revenue && (
+          <FadeinBox delay={0.4}>
+            <div className="border border-border rounded-xl px-3 py-1 flex gap-1 items-center">
+              <BadgeTurkishLira size={17} />
+              <span className="text-sm">{revenue}.00</span>
+            </div>
+          </FadeinBox>
+        )}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Bell className="cursor-pointer" />

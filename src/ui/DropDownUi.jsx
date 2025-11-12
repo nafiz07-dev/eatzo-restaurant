@@ -23,8 +23,10 @@ function DropDownUi({ dropdown, setDropdown, DropContent }) {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-45 ml-10 mb-5">
         <DropdownMenuRadioGroup value={dropdown} onValueChange={setDropdown}>
-          {DropContent?.map((item) => (
-            <DropdownMenuRadioItem value={item}>{item}</DropdownMenuRadioItem>
+          {DropContent?.map((item, key) => (
+            <DropdownMenuRadioItem value={item} key={key}>
+              {item}
+            </DropdownMenuRadioItem>
           ))}
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>

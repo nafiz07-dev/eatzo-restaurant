@@ -23,15 +23,19 @@ function App() {
         toastOptions={{
           success: {
             duration: 3000,
+            iconTheme: {
+              primary: "#000000", // background color of the icon
+              secondary: "#ffffff", // color of the tick itself
+            },
           },
           error: {
             duration: 5000,
           },
           style: {
             fontSize: "16px",
-            maxwidth: "500px",
+            maxWidth: "500px", // note: should be maxWidth, not maxwidth
             padding: "16px 20px",
-            backgroundColor: "#FFFF",
+            backgroundColor: "#fff",
             color: "#000000",
           },
         }}

@@ -14,6 +14,7 @@ import OrderHistory from "./pages/OrderHistory";
 import Setting from "./pages/Setting";
 import Login from "./pages/Login";
 import ProtectedRoute from "./Authentication/ProtectedRoute";
+import OrderView from "./views/OrderView";
 
 // routes.jsx
 export const routes = [
@@ -26,6 +27,11 @@ export const routes = [
     children: [
       { path: "/dashboard", element: <Dashboard />, title: "Dashboard" },
       { path: "/orders", element: <Orders />, title: "New Orders" },
+      {
+        path: "/order/:orderId",
+        element: <OrderView />,
+        title: "Order Details",
+      },
       { path: "/menu", element: <Menu />, title: "Menu" },
       {
         path: "/manage-orders",

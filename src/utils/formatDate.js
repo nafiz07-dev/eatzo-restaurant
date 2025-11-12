@@ -29,3 +29,13 @@ function formatDate(isoString, withTime = false) {
 }
 
 export default formatDate;
+
+export function isoToHour(iso) {
+  const time = new Date(iso).toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+
+  return time;
+}

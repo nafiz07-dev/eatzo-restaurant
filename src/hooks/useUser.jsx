@@ -3,6 +3,9 @@ import supabase from "@/services/supabase";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 
+//////////////
+/// this is just for the useResturantId and authentication.
+
 // For now, this is Ai generated.
 export function useUser() {
   const queryClient = useQueryClient();
